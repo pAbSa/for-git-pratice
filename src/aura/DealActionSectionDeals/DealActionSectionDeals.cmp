@@ -1,0 +1,57 @@
+<!--
+ - Created by horc on 4/12/2019.
+ -->
+
+<aura:component description="DealActionSectionDeals">
+    <aura:attribute name="items" type="Deal_Action__c[]"/>
+    <lightning:card title="Deals List" iconName="standard:scan_card"
+                    class="{!v.expense.Reimbursed__c ?
+                           'slds-theme--success' : ''}">
+
+        <div class="slds-grid">
+            <div class="slds-col slds-size_2-of-12">
+                <div align="center" class="slds-box" style="background:#e6e6e6">
+            <span>
+               Action
+            </span>
+                </div>
+            </div>
+            <div class="slds-col slds-size_2-of-12">
+                <div align="center" class="slds-box" style="background:#e6e6e6">
+                <span>  Status </span>
+                </div>
+            </div>
+            <div class="slds-col slds-size_2-of-12">
+                <div align="center" class="slds-box" style="background:#e6e6e6">
+                <span>  Deal Name </span>
+                </div>
+            </div>
+            <div class="slds-col slds-size_2-of-12">
+                <div align="center" class="slds-box" style="background:#e6e6e6">
+                <span> Valid Through </span>
+                </div>
+            </div>
+            <div class="slds-col slds-size_2-of-12">
+                <div align="center" class="slds-box" style="background:#e6e6e6">
+                <span> Available Deals </span>
+                </div>
+            </div>
+        </div>
+        <aura:iteration items="{!v.items}" var="item">
+            <c:DealActionItem deal="{!item}"/>
+        </aura:iteration>
+
+        <div class="slds-clearfix">
+            <div class="slds-page-header" role="banner">
+                <div class="slds-float_right">
+                    <lightning:button label="Prev" iconName="utility:chevronleft" iconPosition="left"
+                                      onclick="{!c.handlePrev}" disabled="{! v.pageNumber == 1}"/>
+                    <lightning:button label="Next" iconName="utility:chevronright" iconPosition="right"
+                                      disabled="{! v.isLastPage}" onclick="{!c.handleNext}"/>
+                </div>
+                <p class="slds-page-header__title">Page {!v.pageNumber} | Showing records from {! ((v.pageNumber-1)*v.pageSize)+' to '+((v.pageNumber-1)*v.pageSize+v.dataSize)}</p>
+            </div>
+        </div>
+
+    </lightning:card>
+</aura:component>

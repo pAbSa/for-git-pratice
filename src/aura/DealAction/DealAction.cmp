@@ -1,0 +1,25 @@
+<!--
+ - Created by horc on 3/12/2019.
+ -->
+
+<aura:component description="DealAction" controller="DealViewerController" implements="force:lightningQuickActionWithoutHeader,force:hasRecordId, flexipage:availableForAllPageTypes">
+    <aura:attribute name="recordId" type="Id" />
+    <aura:attribute name="deals" type="Deal__c[]"/>
+    <aura:attribute name="deal" type="Deal__c"
+                    default="{ 'sobjectType': 'Deal__c',
+                             'Name': '',
+                             'Action__c': 0,
+                             'Deal__c': 0,
+                             }"/>
+    <aura:attribute name="dealAction" type="Deal_Action__c"/>
+    <aura:handler name="init" action="{!c.doInit}" value="{!this}"/>
+    <aura:handler name="updateDealAction" event="c:DealActionUpdateEvent"
+                  action="{!c.handleUpdateDealAction}"/>
+
+
+    <c:DealActionSectionTodayDealSummary/>
+    <c:DealActionSectionTotalDealSummary/>
+    <c:DealActionSectionDeals items="{!v.deals}"/>
+
+
+</aura:component>

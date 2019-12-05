@@ -1,0 +1,48 @@
+<!--
+- Created by horc on 3/12/2019.
+-->
+
+
+<aura:component description="dealActionItem" controller="DebugController">
+    <aura:attribute name="deal" type="Deal__c"/>
+    <aura:attribute name="accept" type="Boolean" default="false"/>
+    <aura:attribute name="reject" type="Boolean" default="false"/>
+    <aura:attribute name="status" type="String" default="Available"/>
+
+    <aura:registerEvent name="updateDealAction" type="c:DealActionUpdateEvent"/>
+
+    <div class="slds-box--small">
+    <div class="slds-grid">
+        <div align="center" class="slds-col slds-size_2-of-12">
+
+            <span>
+                <button class="slds-button slds-button_success" onclick="{!c.acceptDeal}" disabled="{!v.accept}">Accept</button>
+                 <button class="slds-button slds-button_brand" onclick="{!c.rejectDeal}" disabled="{!v.reject}">Reject</button>
+            </span>
+
+        </div>
+        <div align="center" class="slds-col slds-size_2-of-12">
+
+            <span>{!v.status}</span>
+
+        </div>
+        <div align="center" class="slds-col slds-size_2-of-12">
+
+            <span>{!v.deal.Name}</span>
+
+        </div>
+        <div align="center" class="slds-col slds-size_2-of-12">
+
+            <span>{!v.deal.Valid_Through__c}</span>
+
+        </div>
+        <div align="center" class="slds-col slds-size_2-of-12">
+
+            <span>{!v.deal.Available_Deals__c} </span>
+
+        </div>
+    </div>
+    </div>
+
+
+</aura:component>

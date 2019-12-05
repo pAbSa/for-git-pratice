@@ -1,0 +1,8 @@
+<!--
+ - Created by horc on 4/12/2019.
+ -->
+
+<aura:event type="COMPONENT" description="DealActionUpdate">
+    <aura:attribute name="deal" type="String"/>
+    <aura:attribute name="status" type="String"/>
+</aura:event>
