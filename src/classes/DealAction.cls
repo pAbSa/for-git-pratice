@@ -3,7 +3,7 @@
  */
 
 public with sharing class DealAction {
-
+    private String test = 'test';
     public void updateRelatedContactFields(List<Deal_Action__c> oldDealActions) {
         List<String> contactIdList = new List<String>();
         for (Deal_Action__c dealAction : oldDealActions) {
